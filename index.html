@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+
+        class Car {
+            constructor(soki, address, phone, course) {
+                this.soki = soki;
+                this.address = address;
+                this.phone = phone;
+                this.course = course;
+            }
+
+            get name() {
+                return this.soki + " " + this.address;
+            }
+
+            set phone(phone) {
+                if (!isNaN(phone)) {
+                    this._phone = phone;
+                } else {
+                    throw new TypeError('Value of phone must be a number.');
+                }
+            }
+
+            get phone() {
+                return this._phone + "kg";
+            }
+
+            getInfo() {
+                return "Name: " + this.soki + "\n" +
+                "Address:" + this.address + "\n" +
+                "Phone:" + this.phone + "\n" +
+                "Course:" + this.course
+            }
+
+            static kwToHp(kw){
+                return (kw * 1.34102).toFixed(2);
+            }
+        }
+
+        class Convertible extends Car {
+            
+            constructor(soki, address, phone, course, roofType) {
+                super(soki, address, phone, course);
+                this.roofType = roofType;
+            }
+
+            getInfo() {
+                return super.getInfo() + "\n" +
+                "Roof Type: " + this.roofType;
+            }
+        }
+
+        let convertible1 = new Convertible("Alija", "620", 060, "Rooby", "Vinyl, soft-top");
+        
+        let convertible1Name =convertible1.name;
+
+        console.log(convertible1.getInfo());
+
+
+
+        class Pickup extends Car {
+            constructor(soki, address, phone, course, cargovolume) {
+                super(soki, address, phone, course);
+                this.cargovolume = cargovolume;
+            }
+
+            getInfo() {
+                return super.getInfo() + "\n" +
+                "Cargo volume: " + this.cargovolume;
+            }
+        }
+
+
+        let Pickup1 = new Pickup("Ahmed", "ilidza", 033, "Manga", 63);
+
+        let Pickup1Name = Pickup1.name;
+        let Pickup1Info = Pickup1.getInfo();
+
+        console.log(Pickup1Name);
+        console.log(Pickup1Info);
+    </script>
+</body>
+</html>
